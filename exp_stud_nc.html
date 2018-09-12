@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>NITK</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<h1><a href="index.html">NITK</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="login/login.html">Log In</a></li>
+								<li><a href="login/signup.html">Sign Up</a></li>
+								<li><a href="logout.php"> Sign-out</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Banner -->
+					<section id="banner">
+						<div class="inner">
+							<div class="dp_container">
+								<img src="images/default.jpg" class="dp">
+							</div>
+							<h2 style="margin-top:10px;">Name</h2>
+							<p> HeRE WE WRITE THE MANUAL OF THE EXPERIMENT and add reviews option to the teacher who views the experiment of the student experiment and add a start the experiemnt option to the student when he/she hasnt completed the experiment</p>
+							
+							<button> START EXPERIMENT</button>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+			<script>
+				function show_exp(exp){
+					var x = document.getElementsByClassName("experiment")[exp-1];
+					x.style.display = "block";
+				}
+			</script>
+	</body>
+</html>
