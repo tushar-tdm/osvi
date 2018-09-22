@@ -1,3 +1,9 @@
+<?php
+	include_once 'db.php';
+	session_start();
+
+	$_SESSION['teacher'] = 1;
+?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -37,15 +43,64 @@
 				<!-- Banner -->
 					<section id="banner">
 						<div class="inner">
-							<div class="dp_container">
-								<img src="images/default.jpg" class="dp">
+							<div class="content">
+							<div class="row">
+								<div class="col-lg-6">
+									<p class="name">Experiment ABCD</p>
+									<h3> Prinicpal</h3>
+										<h6>This is the principal of the experiment</h6>
+										<br>
+									<h3> Process </h3>
+										<h6>Explanation of the process ..</h6>	
+								</div>
+
 							</div>
-							<h2 style="margin-top:10px;">Name</h2>
-							<p> HeRE WE WRITE THE MANUAL OF THE EXPERIMENT and add reviews option to the teacher who views the experiment of the student experiment and add a start the experiemnt option to the student when he/she hasnt completed the experiment</p>
-							
-							<button> START EXPERIMENT</button>
+							<hr>
+							<?php
+								if($_SESSION['teacher']==0){
+							?>
+								<input type="submit" value="start Expermient"/>
+							<?php
+							 }
+							?>		
+							</div>
 						</div>
 					</section>
+
+				<!-- Wrapper -->
+				<section id="wrapper">
+
+						<?php
+							if($_SESSION['teacher'] == 1)
+							{
+						?>
+							<!-- this must be displayed only when a teacher views this page -->
+							
+							<section id="one" class="wrapper alt style1">
+								<div class="inner">
+									<h2 class="major">RECENT USERS</h2>
+									<section class="features">
+										<!-- php code to display all the users -->
+										<!-- <?php
+											$i = 0;
+											for($i=0;$i<6;++$i){
+										?> -->
+										<article>
+											<a href="#" class="image dp_container"><img src="images/default.jpg" alt="" /></a>
+											<h3 class="major">Name</h3>
+											<p>Roll No</p>
+											<a href="#" class="special" style="margin-left:-20px;margin-top:-20px; ">Profile</a>
+										</article>
+										<!-- <?php
+											}
+										?> -->
+									</section>
+								</div>
+							</section>
+							
+							<?php
+								}
+							?>
 
 			</div>
 

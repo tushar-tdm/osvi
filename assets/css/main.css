@@ -2975,13 +2975,13 @@ input, select, textarea {
 			padding: 1.75em 1.75em 0.1em 1.75em ;
 			background-color: #353849;
 			border-radius: 5px;
-			margin: 1.5em 3em 1.5em 0;
-			width: calc(20% - 1.5em);
+			margin: 1.5em 2em 1.5em 0;
+			width: calc(20%);
 			height:350px;
 		}
 
-			.features article:nth-child(3+4n){
-				margin-left: 50px;
+			.features article:nth-child(2n) {
+				margin-right: 40px;
 			}
 
 			.features article .image {
@@ -2997,7 +2997,17 @@ input, select, textarea {
 				.features article .image img {
 					border-radius: 5px 5px 0 0;
 					width: 100%;
+					height:180px;
 				}
+/*
+		@media screen and (max-width: 1280px) {
+
+			.features article {
+				margin: 1em 2em 1em 0;
+				width: calc(10% - 1em);
+			}
+
+		}*/
 
 		@media screen and (max-width: 980px) {
 
@@ -3035,7 +3045,6 @@ input, select, textarea {
 					width: 100%;
 					margin: 0 0 2em 0 !important;
 				}
-
 		}
 
 /* Header */
@@ -3425,6 +3434,28 @@ input, select, textarea {
 			text-transform: uppercase;
 		}
 
+		#banner .name{
+			font-family: Raleway, Helvetica, sans-serif;
+			font-size: 2em;
+			font-weight: bold;
+			letter-spacing: 0.1em;
+			line-height: 2;
+			text-transform: uppercase;
+		}
+
+		#banner .dp_container{			
+			width:250px;
+			height:250px;
+			border-bottom-right-radius: 60px;
+			border-top-right-radius: 60px;
+
+		}
+
+		@media screen and (max-width: 2000px){
+			#banner .dp_container{
+				margin-left:350px;
+			}
+		}
 		@media screen and (max-width: 1280px) {
 
 			#banner {
@@ -3435,6 +3466,13 @@ input, select, textarea {
 				background-position: center, center;
 				margin-bottom: -6.5em;
 			}
+
+			#banner .dp_container{
+				margin-left:100px;
+			}
+			/*#banner .labs{
+				margin-left: 610px;
+			}*/
 
 		}
 
@@ -3448,6 +3486,14 @@ input, select, textarea {
 				#banner .inner {
 					width: 100%;
 				}
+
+			#banner .dp_container{
+				margin-left:70px;
+			}
+
+/*			#banner .labs{
+				margin-left: 480px;
+			}*/
 
 		}
 
@@ -3473,6 +3519,13 @@ input, select, textarea {
 				#banner p {
 					font-size: 0.8em;
 				}
+
+				#banner .dp_container{
+					margin-left:50px;
+				}
+/*				#banner .labs{
+				margin-left: 360px;
+			}*/
 
 		}
 
@@ -3508,9 +3561,6 @@ input, select, textarea {
 			filter: blur(2px);
 		}
 
-		.dp{
-			border-radius: 120px;
-		}
 /* Wrapper */
 
 	#wrapper > header {
@@ -3963,6 +4013,10 @@ input, select, textarea {
 				padding: 2em 1.5em 0.1em 1.5em ;
 			}
 
+		}
+
+		#exp {
+			text-decoration: none;
 		}
 
 /* Footer */

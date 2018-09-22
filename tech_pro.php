@@ -1,5 +1,23 @@
 <?php
-	
+	session_start();
+	include_once 'db.php';
+
+	if($_SESSION['teacher'] == 0){
+		header("Location: login/login.html");
+	}
+
+	$id = $_SESSION['id'];
+
+	$sql = "SELECT * FROM users4 WHERE u_id='$id'";
+	$result = mysqli_query($conn,$sql);
+	$n = mysqli_num_rows($result);
+	$row = mysqli_fetch_assoc($result);
+
+	$fname = $row['fname'];
+	$lname = $row['lname'];
+	$roll = $row['u_id'];
+	$email = $row['email'];
+	$phone = $row['phone'];
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -40,12 +58,20 @@
 				<!-- Banner -->
 					<section id="banner">
 						<div class="inner">
-							<div class="dp_container">
-								<img src="images/default.jpg" class="dp">
+							<div class="container">
+							<div class="row">
+								<div class="col-lg-6">
+									<p class="name"> <?php echo $fname." ".$lname; ?></p>
+								</div>
+								<div class="col-lg-6">	
+									<img src="uploads/default.jpg" class="dp_container col-lg-offset-5 col-md-offset-4 col-sm-offset-4 col-xs-offset-2">
+								</div>
 							</div>
-							<h2 style="margin-top:10px;">Name</h2>
-							
 						</div>
+						</div>
+						
+						<br><br><br>
+						<h2 class="labs" style="margin-left: 20px;margin-bottom: -20px;color:#4abdac;">LABS</h2>
 					</section>
 
 				<!-- Wrapper -->
@@ -54,16 +80,16 @@
 						<!-- One -->
 							<section id="one" class="wrapper spotlight style1">
 								<div class="inner">
-									<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+									<a class="image"><img src="images/pic01.jpg" alt="" /></a>
 									<div class="content">
 										<h2 class="major">Strength Of Materials</h2>
 										<p>Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras turpis ante, nullam sit amet turpis non, sollicitudin posuere urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim dapibus. Nullam ultrices, neque et faucibus viverra, ex nulla cursus.</p>
 										<button onclick="show_exp(1)"> Experiments</button>
 										<div class="experiment" style="display: none;">
-											<a href="">Experiment 1</a><br>
-											<a href="">Experiment 2</a><br>
-											<a href="">Experiment 3</a><br>
-											<a href="">Experiment 4</a>
+											<a href="exp_stud_nc.php">Experiment 1</a><br>
+											<a href="exp_stud_nc.php">Experiment 2</a><br>
+											<a href="exp_stud_nc.php">Experiment 3</a><br>
+											<a href="exp_stud_nc.php">Experiment 4</a>
 										</div>
 									</div>
 								</div>
@@ -136,22 +162,20 @@
 							<h2 class="major">DETAILS</h2>
 							<form method="post" action="#">
 								<div class="fields">
+									
 									<div class="field">
-										<label for="name">Name</label>
+										<label for="name">First Name</label>
 										<input type="text" name="name" id="name" disabled="true" />
 									</div>
 									<div class="field">
 										<label for="contact">Phone</label>
-										<input type="text" name="name" id="name" disabled="true"/>
+										<input type="text" name="phone" id="name" disabled="true"/>
 									</div>
 									<div class="field">
 										<label for="email">Email</label>
 										<input type="email" name="email" id="email" disabled="true"/>
 									</div>
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" disabled="true"/>
-									</div>
+
  								<!--<div class="field">
 										<label for="message">Message</label>
 										<textarea name="message" id="message" rows="4"></textarea>
@@ -166,7 +190,6 @@
 							</ul>
 						</div>
 					</section>
-
 			</div>
 
 		<!-- Scripts -->

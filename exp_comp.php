@@ -1,3 +1,23 @@
+<?php
+	include_once 'db.php';
+	session_start();
+
+	//$_SESSION['teacher'] = 1;
+
+	$id = $_SESSION['id'];
+
+	$sql = "SELECT * FROM users4 WHERE u_id='$id'";
+	$result = mysqli_query($conn,$sql);
+	$n = mysqli_num_rows($result);
+	$row = mysqli_fetch_assoc($result);
+
+	$fname = $row['fname'];
+	$lname = $row['lname'];
+	$roll = $row['u_id'];
+	$email = $row['email'];
+	$phone = $row['phone'];
+?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -60,11 +80,18 @@
 				<!-- Banner -->
 					<section id="banner">
 						<div class="inner">
-							<div class="dp_container">
-								<img src="images/default.jpg" class="dp">
+						<div class="row">
+			
+							<div class="col-lg-6">
+									<p class="name"> <?php echo $fname." ".$lname; ?></p>
+								</div>
+								<div class="col-lg-6">	
+									<img src="uploads/default.jpg" class="dp_container col-lg-offset-5 col-md-offset-4 col-sm-offset-4 col-xs-offset-2">
+								</div>
 							</div>
-							<h2 style="margin-top:10px;">Name</h2>
-							
+
+							<hr>
+							<h3> Experiment ABCD </h3>
 						</div>
 					</section>
 
@@ -123,14 +150,19 @@
 								</div>
 							</section>
 
+						<?php
+							if($_SESSION['teacher'] == 1)
+							{
+						?>
 						<!-- Three -->
 							<section id="three" class="wrapper spotlight style3">
 								<div class="inner">
 									<div class="content">
 										Here if teacher is viewing this page then we give some space for reviews/remarks
 										<div class="field">
-											<label for="message">Message</label>
+											<label for="message">REMARKS</label>
 										<textarea name="message" id="message" rows="4"></textarea>
+										<input type="submit" value="Give Remark" style="margin-top:20px;">
 									</div>
 									</div>
 								</div>
@@ -138,6 +170,7 @@
 
 							<!-- Four -->
 							<!-- this must be displayed only when a teacher views this page -->
+							
 							<section id="four" class="wrapper alt style1">
 								<div class="inner">
 									<h2 class="major">RECENT USERS</h2>
@@ -159,6 +192,10 @@
 									</section>
 								</div>
 							</section>
+							
+							<?php
+								}
+							?>
 
 					</section>
 
