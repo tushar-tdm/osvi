@@ -2,8 +2,8 @@
 	session_start();
 	include_once 'db.php';
 	$id = $_SESSION['id'];
-
-	$sql = "SELECT * FROM users4 WHERE u_id='$id'";
+	if($id){
+		$sql = "SELECT * FROM users4 WHERE u_id='$id'";
 	$result = mysqli_query($conn,$sql);
 	$n = mysqli_num_rows($result);
 	$row = mysqli_fetch_assoc($result);
@@ -13,6 +13,13 @@
 	$roll = $row['u_id'];
 	$email = $row['email'];
 	$phone = $row['phone'];
+	}
+
+	else{
+		header("Location: login/login.html?login_to_continue");
+		exit();
+	}
+	
 
 ?>
 <!DOCTYPE HTML>
@@ -26,11 +33,7 @@
 
 	</head>
 	<body class="is-preload">
-
-		
 			<div id="page-wrapper">
-
-				
 					<header id="header" class="alt">
 						<h1><a href="index.html">OSVI</a></h1>
 						<nav>
@@ -44,9 +47,8 @@
 							<h2>Menu</h2>
 							<ul class="links">
 								<li><a href="index.php">Home</a></li>
-								<li><a href="tech_pro.php">Profile</a></li>
-								<li><a href="login/login.html">Log In</a></li>
-								<li><a href="login/signup.html">Sign Up</a></li>
+								<li><a href="stud_pro.php">Profile</a></li>
+								<li><a href="logout.php">Log Out</a></li>
 							</ul>
 							<a href="#" class="close">Close</a>
 						</div>
@@ -85,9 +87,9 @@
 										<p>Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras turpis ante, nullam sit amet turpis non, sollicitudin posuere urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim dapibus. Nullam ultrices, neque et faucibus viverra, ex nulla cursus.</p>
 										<button class="special" onclick = "show_exp()">Experiments</button>
 										<div id="exp" style="display: none;">
-											<a href="#">Experiment 1</a><br>
-											<a href="#">Experiment 2</a><br>
-											<a href="#">Experiment 3</a><br>
+											<a href="plotter/html/canvas.php">2D-Plotter</a><br>
+											<a href="led/rta.php">LED Control</a><br>
+											<a href="prabhu/index.php">BARLINKAGE CONTROL</a><br>
 											<a href="#">Experiment 4</a><br>
 											<a href="#">Experiment 5</a><br>
 											<a href="#">Experiment 6</a>
@@ -116,7 +118,7 @@
 									</div>
 									<div class="field">
 										<label for="message">Phone</label>
-										<input type="text" name="phone" id="phone"/>
+										<input type="text" name="phone" id="phone" value="<?php echo $phone; ?>"/>
 									</div>
 
 								</div>

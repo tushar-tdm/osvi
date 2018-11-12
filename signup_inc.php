@@ -87,7 +87,7 @@ if(isset($_POST['signup']))
 							if(in_array($fileActualExt, $allowed)){
 								if($fileSize < 10000000){ //approx 4mb
 									//for the first time num will be equal to num
-									$fileNewName = "profile".$uid."-1".".".$fileActualExt;
+									$fileNewName = "profile".$uid.".".$fileActualExt;
 									$fileDestination = "uploads/".$fileNewName;
 									move_uploaded_file($fileTmpName, $fileDestination);
 									$sql = "INSERT INTO images (user_id,stat,format,num) VALUES ('$uid',1,'$fileActualExt',1)";	
@@ -100,13 +100,13 @@ if(isset($_POST['signup']))
 					}
 					else{
 						$def_ext = '.jpg';
-						$sql = "INSERT INTO images (user_id,stat,format,num) VALUES (0,'$def_ext',0)";
+						$sql = "INSERT INTO `images` (`user_id`,`stat`,`format`,`num`) VALUES (0,'$def_ext',0)";
 						mysqli_query($conn,$sql);
 					}
 					$_SESSION['id'] = $uid;
-					$_SESSION['teacher'] = 0;
+					$_SESSION['teacher'] = 1;
 
-					header("Location: stud_pro.php?signup=success");
+					header("Location: tech_pro.php?signup=success");
 					exit();
 				}
 			}

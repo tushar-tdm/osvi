@@ -20,7 +20,7 @@
 			$result_check = mysqli_num_rows($result);
 
 			if($result_check == 0){
-				echo 'user not found!';
+				//echo 'user not found!';
 				header("Location: login/login.html?login=no user found");
 				exit();
 			}
@@ -29,12 +29,14 @@
 				{
 					if(password_verify($pass,$row['pass'])){
 						/*echo "login succesfull"."<br>";*/
-						$_SESSION['techer'] = $row['tech'];
+						
 						$_SESSION['id'] = $user;
 						if($row['tech'] == 1){
+							$_SESSION['teacher'] = 1;
 							header("Location: tech_pro.php?login=success");
 						}
 						else{
+							$_SESSION['teacher'] = 0;
 							header("Location: stud_pro.php?login=success");
 						}
 					}

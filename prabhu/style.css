@@ -1,0 +1,80 @@
+body{
+    background:url("../images/bg.jpg");
+    background-repeat: no-repeat;
+    background: cover;
+}
+
+h1{
+    margin-left: 29%;
+    font-family: 'Raleway', sans-serif;
+    margin-top: 20px;
+    color:white;
+    padding-top:20px;
+
+}
+
+.h{
+    background-color: #6666FF;  
+}
+
+.uf{
+    font-weight:bold;
+    font-size: 24px;
+    font-family: Raleway, Helvetica, sans-serif;
+
+}
+
+.fileup{
+    border:solid 2px grey;
+    border-radius: 10px;
+    margin-left:40%;
+    padding: 10px 10px 10px 10px;
+    width: 230px;
+    font-weight:bold;
+    font-size: 24px;
+    font-family: Raleway, Helvetica, sans-serif;
+}
+
+input[type="file"]{
+    width: 200px;
+    color: white;
+    font-weight: bold;
+}
+
+textarea{
+    margin-left: 30%;
+    border: solid 2px grey;
+    border-radius: 10px;
+
+}
+
+.x,.y{
+    margin-left: 40%;
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 18px;
+    color:white;
+    font-family: 'Oswald', sans-serif;
+}
+
+.x input, .y input{
+    border-radius: 10px;
+    border-color:black;
+    margin-left: 10px;
+    padding-left: 10px;
+    height: 25px;
+    color:black; 
+}
+
+input[type="submit"]{
+    margin-left: 43%;
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: transparent;
+    color:white;
+    font-weight: bold;
+    font-family: Raleway, Helvetica, sans-serif;
+    border: solid 2px white ;
+    cursor: pointer;   
+}

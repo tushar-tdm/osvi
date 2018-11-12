@@ -1,0 +1,103 @@
+button{
+    width:70px;
+    height: 140px;
+    border-color:transparent;
+    background-color:transparent;
+    margin-bottom:10px;
+}
+
+img{
+    width:70px;
+    height: 140px;
+   /*  margin-left: 60px; */
+}
+
+.right_btn{
+    margin-left: 55%;
+}
+
+body{
+    background-image: url("/images/rubiksimg.jpg");
+    /*opacity: 0; */
+}
+
+.triangle-up {
+	width: 100px;
+    height: -20px;
+    margin-left: 36%; 
+	border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+    border-bottom: 50px solid #f20;
+    cursor:pointer;
+    color: #ffff;
+}
+
+.triangle-down {
+	width: 100px;
+	height: 0;
+	border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+    border-top: 50px solid #f20;
+    cursor:pointer;
+    margin-left: 36%;
+    margin-top:20px;
+    color: #ffff;
+}
+
+.triangle-left {
+	width: 100px;
+	height: 0;
+	border-top: 50px solid transparent;
+	border-right: 50px solid #f20;
+    border-bottom: 50px solid transparent;
+    cursor:pointer;
+    color: #ffff;
+}
+
+.triangle-right {
+	width: 100px;
+	height: 0;
+	border-top: 50px solid transparent;
+	border-left: 50px solid #f20;
+    border-bottom: 50px solid transparent;
+    cursor:pointer;
+    margin-left: 150px;
+    color: #ffff;
+}
+
+.video{
+    width: 370px;
+    height: 300px;
+    border: solid 2px black;
+    margin-bottom: 35px;
+    margin-left: -20px;
+    border-radius: 10px;
+}
+
+.sf{
+    width: 100px;
+    height: 50px;
+    margin-left: 135px;
+    margin-bottom:25px;
+    font-weight: bold;
+    border:solid 2px black;
+    background-color: #00bfff;
+}
+
+.scr{
+    width: 100px;
+    height: 50px;
+    margin-left: 135px;
+    font-weight: bold;
+    border:solid 2px black;
+    background-color: #7cfc00;
+}
+
+.heading{
+    margin-left: 30%;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    color: #ffff;
+}
+
+

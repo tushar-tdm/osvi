@@ -18,6 +18,12 @@
 	$roll = $row['u_id'];
 	$email = $row['email'];
 	$phone = $row['phone'];
+
+	$sql = "SELECT * FROM images";
+	$result = mysqli_query($conn,$sql);
+	$row = mysqli_fetch_assoc($result);
+	$format = $row['format'];
+	$stat = $row['stat'];
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -47,9 +53,8 @@
 							<h2>Menu</h2>
 							<ul class="links">
 								<li><a href="index.html">Home</a></li>
-								<li><a href="login/login.html">Log In</a></li>
-								<li><a href="login/signup.html">Sign Up</a></li>
-								<li><a href="logout.php"> Sign-out</a></li>
+								<li><a href="tech_pro.php">Profile</a></li>
+								<li><a href="logout.php"> Log out</a></li>
 							</ul>
 							<a href="#" class="close">Close</a>
 						</div>
@@ -64,7 +69,18 @@
 									<p class="name"> <?php echo $fname." ".$lname; ?></p>
 								</div>
 								<div class="col-lg-6">	
-									<img src="uploads/default.jpg" class="dp_container col-lg-offset-5 col-md-offset-4 col-sm-offset-4 col-xs-offset-2">
+									<?php
+									if($stat == 1){
+									?>
+									<img src="<?php echo "uploads/profile".$id.".".$format; ?>" class="dp_container col-lg-offset-5 col-md-offset-4 col-sm-offset-4 col-xs-offset-2" alt="abc">
+									<?php 
+										}
+									else{
+									?>
+									<img src="<?php echo "uploads/default.jpg" ?>" class="dp_container col-lg-offset-5 col-md-offset-4 col-sm-offset-4 col-xs-offset-2" alt="def	">
+									<?php
+									}
+									?>									
 								</div>
 							</div>
 						</div>
@@ -82,14 +98,14 @@
 								<div class="inner">
 									<a class="image"><img src="images/pic01.jpg" alt="" /></a>
 									<div class="content">
-										<h2 class="major">Strength Of Materials</h2>
+										<h2 class="major">OSVI</h2>
 										<p>Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras turpis ante, nullam sit amet turpis non, sollicitudin posuere urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim dapibus. Nullam ultrices, neque et faucibus viverra, ex nulla cursus.</p>
 										<button onclick="show_exp(1)"> Experiments</button>
 										<div class="experiment" style="display: none;">
-											<a href="exp_stud_nc.php">Experiment 1</a><br>
-											<a href="exp_stud_nc.php">Experiment 2</a><br>
-											<a href="exp_stud_nc.php">Experiment 3</a><br>
-											<a href="exp_stud_nc.php">Experiment 4</a>
+											<a href="led/rta.php">LED Control</a><br>
+											<a href="plotter/html/canvas.php">2D Plotter</a><br>
+											<a href="prabhu/index.php">BARLINKAGE CONTROL</a><br>
+											<a href="rubick/index.html">Rubick's Solving Machine</a><br>
 										</div>
 									</div>
 								</div>
@@ -118,7 +134,7 @@
 								<div class="inner">
 									<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
 									<div class="content">
-										<h2 class="major">OSVI</h2>
+										<h2 class="major">Strength Of Materials</h2>
 										<p>Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras turpis ante, nullam sit amet turpis non, sollicitudin posuere urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim dapibus. Nullam ultrices, neque et faucibus viverra, ex nulla cursus.</p>
 										<button onclick="show_exp(3)"> Experiments</button>
 										<div class="experiment" style="display: none;">
@@ -137,19 +153,41 @@
 									<h2 class="major">RECENT USERS</h2>
 									<section class="features">
 										<!-- php code to display all the users -->
-										<!-- <?php
-											$i = 0;
-											for($i=0;$i<6;++$i){
-										?> -->
+										<?php
+											$sql = "SELECT * FROM recent ORDER BY doe DESC";
+											$result = mysqli_query($conn,$sql);
+
+											while($row = mysqli_fetch_assoc($result)){
+												$userid = $row['user_id'];
+
+												// these are saple users so dont have these entries in images and 
+												// users4 table. so make valid users entry and check expain.
+												$sql = "SELECT * FROM images WHERE `user_id` = $userid";
+												$result2 = mysqli_query($conn,$result2);
+												$row2 = mysqli_fetch_assoc($result2);
+												
+												$f = $row2['format']; $s = $row2['stat'];
+												if($s == 1){
+													$picloc = "uploads/profile/".$userid.".".$f;
+												}else{
+													$picloc = "uploads/default.jpg";
+												}
+
+												$sql = "SELECT * FROM users4 WHERE user_id=$userid";
+												$result3 = mysqli_query($conn,$sql);
+												$row3 = mysqli_fetch_assoc($result3);
+
+										?> 
 										<article>
-											<a href="#" class="image"><img src="images/default.jpg" alt="" /></a>
-											<h3 class="major">Name</h3>
-											<p>Roll No</p>
-											<a href="#" class="special" style="margin-left:-20px;margin-top:-20px; ">Profile</a>
+											
+											<a class="image"><img src="<?php echo $picloc; ?>" alt="profile" /></a>
+											<h3 class="major"><?php echo $row3['fname']; ?></h3>
+											<p><?php echo $row['exp']; ?></p> <!-- user_id is the roll no for the students -->
+											<a href="stud_pro.php" class="special" style="margin-left:-20px;margin-top:-20px; ">Profile</a>
 										</article>
-										<!-- <?php
+										 <?php
 											}
-										?> -->
+										?> 
 									</section>
 								</div>
 							</section>
@@ -160,26 +198,26 @@
 					<section id="footer">
 						<div class="inner">
 							<h2 class="major">DETAILS</h2>
-							<form method="post" action="#">
+							<form method="post" action="details.php">
 								<div class="fields">
 									
-									<div class="field">
-										<label for="name">First Name</label>
-										<input type="text" name="name" id="name" disabled="true" />
+								<div class="field">
+										<label for="fname">First Name</label>
+										<input type="text" name="fname" id="fname" value="<?php echo $fname; ?>" />
 									</div>
 									<div class="field">
-										<label for="contact">Phone</label>
-										<input type="text" name="phone" id="name" disabled="true"/>
+										<label for="lname">Last Name</label>
+										<input type="text" name="lname" id="lname" value="<?php echo $lname; ?>" />
 									</div>
 									<div class="field">
 										<label for="email">Email</label>
-										<input type="email" name="email" id="email" disabled="true"/>
+										<input type="email" name="email" id="email" value="<?php echo $email; ?>"/>
+									</div>
+									<div class="field">
+										<label for="message">Phone</label>
+										<input type="text" name="phone" id="phone" value="<?php echo $phone; ?>"/>
 									</div>
 
- 								<!--<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="4"></textarea>
-									</div> -->
 								</div>
 								<ul class="actions">
 									<li><input type="submit" value="Edit Details" /></li>

@@ -5,7 +5,7 @@ $sql = "SELECT * FROM users4";
 $result = mysqli_query($conn,$sql);
 $row = mysqli_fetch_assoc($result);
 
-echo $row['fname']." ".$row['lname'];
+//echo $row['fname']." ".$row['lname'];
 
 $first = "sagar";
 $last = "dm";
@@ -19,11 +19,15 @@ $sql = "INSERT INTO users4 (fname,lname,email,u_id,pass,phone,tech) VALUES ('$fi
 //$sql = "INSERT INTO images (user_id,stat,format,num) VALUES ('tdm',1,'jpg',1)"; - this works
 $result = mysqli_query($conn,$sql);
 
-$sql = "SELECT * FROM users4 WHERE u_id='$uid'";
+$sql = "SELECT a.fname AS 'Aname',b.fname AS 'Bname' FROM users4 a,users4 b;
 $result = mysqli_query($conn,$sql);
-$row = mysqli_fetch_assoc($result);
 
-echo $row['fname']." ".$row['lname'];
+
+while($row = mysqli_fetch_assoc($result)){
+    echo $row['fname']."  ".$row['lname']."<br>";
+
+}
+
 
 
 

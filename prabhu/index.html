@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <title>BARLINKAGE CONTROL</title>
+    <link rel="stylesheet" href='style.css'/>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+   </head>
+<body >
+
+<div class="h">
+  <h1>BARLINKAGE CONTROL LINE DRAWER</h1><hr>
+</div>
+<p class="uf">Upload file of x and y value.</p>
+
+<form action = "http://localhost:5000" method = "POST">
+<div class="fileup">
+  Select a file to upload:<br><br>
+  <input type="file" id="myFile">
+</div>
+
+<hr>
+<!--<div style="width: 300px;height: 0px" id="output"></div>-->
+<textarea style="width:500px;height: 400px" id="output"></textarea>
+<script>
+var input = document.getElementById("myFile");
+var output = document.getElementById("output");
+
+input.addEventListener("change", function () {
+  if (this.files && this.files[0]) {
+    var myFile = this.files[0];
+    var reader = new FileReader();
+
+    reader.addEventListener('load', function (e) {
+      output.textContent = e.target.result;
+    });
+
+    reader.readAsBinaryString(myFile);
+  }
+});
+</script>
+
+ <p class="x">X<input type = "text" name = "x" /></p>
+ <p class="y">Y<input type = "text" name = "y" /></p>
+ <p><input type = "submit" value = "SUBMIT" /></p>
+ <script>
+ var x = ["100", "200", "300", "400", "500", "600"]
+ var text = "";
+ for (i= 0; i < x.length; i++){
+	text += x[i] + "<br>";
+}
+
+</form>
+</script>
+
+  </body>
+</html>

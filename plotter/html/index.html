@@ -1,0 +1,36 @@
+<head>
+    <style>
+    input.MyButton {
+    width: 300px;
+    padding: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 150%;
+    background: #3366cc;
+    color: #fff;
+    border: 1px solid #3366cc;
+    border-radius: 10px;
+    }
+    input.MyButton:hover {
+    color: #ffff00;
+    background: #000;
+    border: 1px solid #fff;
+    }
+    </style>
+</head>
+
+<body style="width:400px; margin:30 auto;background-image:url(img/2.png); ">
+    <h1>Web based 2D Sketcher</h1>
+<div>
+    <div style="width:300px; margin:10 auto;">
+        <form>
+            <input class="MyButton" type="button" value="Upload Image" onclick="window.location.href='bin_upload.html'" />
+        </form>
+    </div>
+    <div style="width:300px; margin:10 auto;">
+        <form>
+            <input class="MyButton" type="button" value="Draw your Image" onclick="window.location.href='canvas.php'" />
+        </form>
+    </div>
+</div>
+</body>
