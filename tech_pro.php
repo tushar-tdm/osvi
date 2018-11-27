@@ -103,7 +103,7 @@
 										<button onclick="show_exp(1)"> Experiments</button>
 										<div class="experiment" style="display: none;">
 											<a href="led/rta.php">LED Control</a><br>
-											<a href="plotter/html/canvas.php">2D Plotter</a><br>
+											<a href="plotter/html/index.php">2D Plotter</a><br>
 											<a href="prabhu/index.php">BARLINKAGE CONTROL</a><br>
 											<a href="rubick/index.html">Rubick's Solving Machine</a><br>
 										</div>

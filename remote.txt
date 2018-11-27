@@ -1,0 +1,14 @@
+ - put queuing code in all experiments
+ - remote access
+ - include rubicks recent files 
+ - set the scalability of the plotter
+ - setting up communication for all the projects.
+ - window.onunload function not working in index and c.php
+
+ https://www.raspberrypi.org/documentation/remote-access/access-over-Internet/README.md
+
+///////////////////////
+
+ https://www.youtube.com/watch?v=kSHbXWS24aE
+ https://www.youtube.com/watch?v=d5yNZs_pQx4
+ http://trevorappleton.blogspot.com/2014/03/remotely-copy-files-to-and-from-your.html (same network)

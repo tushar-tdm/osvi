@@ -2,6 +2,7 @@
 	session_start();
 	include_once 'db.php';
 	$id = $_SESSION['id'];
+	
 	if($id){
 		$sql = "SELECT * FROM users4 WHERE u_id='$id'";
 	$result = mysqli_query($conn,$sql);
@@ -13,13 +14,19 @@
 	$roll = $row['u_id'];
 	$email = $row['email'];
 	$phone = $row['phone'];
+	
 	}
 
 	else{
 		header("Location: login/login.html?login_to_continue");
 		exit();
 	}
-	
+
+	if($_SESSION['2d'] == 1){
+		$_SESSION['2d'] = 0;
+		$sql = "DELETE FROM token WHERE u_id = '$id'";
+		$result = mysqli_query($conn,$sql);
+	}
 
 ?>
 <!DOCTYPE HTML>
@@ -87,7 +94,7 @@
 										<p>Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras turpis ante, nullam sit amet turpis non, sollicitudin posuere urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim dapibus. Nullam ultrices, neque et faucibus viverra, ex nulla cursus.</p>
 										<button class="special" onclick = "show_exp()">Experiments</button>
 										<div id="exp" style="display: none;">
-											<a href="plotter/html/canvas.php">2D-Plotter</a><br>
+											<a href="plotter/html/index.php">2D-Plotter</a><br>
 											<a href="led/rta.php">LED Control</a><br>
 											<a href="prabhu/index.php">BARLINKAGE CONTROL</a><br>
 											<a href="#">Experiment 4</a><br>

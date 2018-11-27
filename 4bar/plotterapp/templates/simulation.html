@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %} {{project.project_name}} {% endblock %}
+
+{% block funcCall %}onload="startCalibration({{project.widthPx}}, {{project.heightPx}}, {{ project.id }})"{% endblock %}
+
+{% block extraStatic %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/calibration.css') }}">
+{% endblock %}
+
+{% block content %}
+  <div id="canvasDiv">
+  </div>
+
+  <div class="controller">
+      <button onmousedown="up()" onmouseup="clearmove()" ontouchstart="up()">Up</button>
+      <button onmousedown="down()" onmouseup="clearmove()" ontouchstart="down()">Down</button><br>
+      <button onmousedown="left()" onmouseup="clearmove()" ontouchstart="left()">Left</button>
+      <button onmousedown="right()" onmouseup="clearmove()" ontouchstart="right()">Right</button><br>
+      <button onmousedown="leftUp()" onmouseup="clearmove()" ontouchstart="leftUp()">Left Up</button>
+      <button onmousedown="rightDown()" onmouseup="clearmove()" ontouchstart="rightDown()">Right Down</button><br>
+      <button onmousedown="leftDown()" onmouseup="clearmove()" ontouchstart="leftDown()">Left Down</button>
+      <button onmousedown="rightUp()" onmouseup="clearmove()" ontouchstart="rightUp()">Right Up</button>
+  </div>
+  <div class="slidecontainer">
+    <input type="range" min="1" max="1023" value="1" class="slider" id="myRange">
+  </div>
+  <a href="{{ url_for('canvas',id=project.id) }}"><button>Start Drawing</button></a>
+
+  <script src = "{{ url_for('static', filename='javascript/simulation.js') }}"></script>
+
+{% endblock %}

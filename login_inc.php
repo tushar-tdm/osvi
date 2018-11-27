@@ -32,11 +32,18 @@
 						
 						$_SESSION['id'] = $user;
 						if($row['tech'] == 1){
+							
+							$_SESSION['2d'] = 0;
+							$_SESSION['rubick'] = 0;
+							$_SESSION['4b'] = 0;
 							$_SESSION['teacher'] = 1;
 							header("Location: tech_pro.php?login=success");
 						}
 						else{
 							$_SESSION['teacher'] = 0;
+							$_SESSION['2d'] = 0;
+							$_SESSION['rubick'] = 0;
+							$_SESSION['4b'] = 0;
 							header("Location: stud_pro.php?login=success");
 						}
 					}

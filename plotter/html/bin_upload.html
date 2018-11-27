@@ -176,7 +176,7 @@
             var canvasData = canvas.toDataURL("image/png");
             document.getElementById("loading").style.display="block";
             var ajax = new XMLHttpRequest();
-            ajax.open("POST",'canvas.php',true);
+            ajax.open("POST",'canvas2.php',true);
             //window.alert(canvasData)
             ajax.setRequestHeader('Content-Type', 'application/upload');
             ajax.send(canvasData);

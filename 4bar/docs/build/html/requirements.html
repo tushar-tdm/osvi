@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Requirements of the project &mdash; Remote Triggered Vertical Plotter 1.0.a documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation of the software" href="install.html" />
+    <link rel="prev" title="Welcome to Remote Triggered Vertical Plotter’s documentation and help page !" href="index.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Remote Triggered Vertical Plotter
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Requirements of the project</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#web-page-necessities">1.0. Web page necessities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#circuit-necessities">2.0. Circuit necessities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mechanism-hardware-necessities">3.0. Mechanism &amp; Hardware necessities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hardware-used">4.0. Hardware used</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation of the software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="start_project.html">Running our application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calibration.html">Calibration of the bot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulation.html">Simulation of the bot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="painting.html">Drawing on the canvas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="electronics.html">Understanding the circuit used for the project</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Remote Triggered Vertical Plotter</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Requirements of the project</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/requirements.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="requirements-of-the-project">
+<span id="require"></span><h1>Requirements of the project<a class="headerlink" href="#requirements-of-the-project" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="web-page-necessities">
+<h2>1.0. Web page necessities<a class="headerlink" href="#web-page-necessities" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>The page should be a responsive HTML page which returns the pixel values.</li>
+<li>Should comprise of a setup page where the basic parameters (eg: distance between mounting points, vertical distance to origin is set).</li>
+<li>Should comprise of a calibration page which should have arrow keys for movement and an analog joypad to control the plotter movement.</li>
+<li>Plotter should run in manual mode(with joystick) and auto mode where the drawing on HTML page will be drawn.</li>
+</ol>
+</div>
+<div class="section" id="circuit-necessities">
+<h2>2.0. Circuit necessities<a class="headerlink" href="#circuit-necessities" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>The encoder output will be read using an Arduino.</li>
+<li>Data will be sent to the Raspberrypi serially.</li>
+<li>Raspberrypi will control the motors (using motor driver) based on the feedback given.</li>
+<li>Calibrating the system for accurate distance measurement.</li>
+</ol>
+</div>
+<div class="section" id="mechanism-hardware-necessities">
+<h2>3.0. Mechanism &amp; Hardware necessities<a class="headerlink" href="#mechanism-hardware-necessities" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>The Body will be suspended by 2 strings.</li>
+<li>The pulleys will be angled in such a way as to provide maximum wrap over the encoder pulleys to prevent any slip.</li>
+<li>Every co-ordinate will be denoted by 2 lengths. Which the motor will adjust to based on the feedback from the encoders.</li>
+</ol>
+</div>
+<div class="section" id="hardware-used">
+<h2>4.0. Hardware used<a class="headerlink" href="#hardware-used" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="57%" />
+<col width="43%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Item</td>
+<td>Approximate price (in rupees)</td>
+</tr>
+<tr class="row-even"><td>RaspberryPi Zero W / RaspberryPi3 Model B</td>
+<td>Rs. 1400 / ~3400</td>
+</tr>
+<tr class="row-odd"><td>Rotary Encoders x2</td>
+<td>1400 x 2 = Rs. 2800</td>
+</tr>
+<tr class="row-even"><td>Arduino Nano / Arduino Uno</td>
+<td>Rs. 200 / ~400</td>
+</tr>
+<tr class="row-odd"><td>High Torque Motor x2</td>
+<td>950 x 2 = Rs. 1900</td>
+</tr>
+<tr class="row-even"><td>Pulleys/Chassis/Strings and Misc</td>
+<td>Rs. 1000</td>
+</tr>
+</tbody>
+</table>
+<p>The maximum expenditure on this project will be ~ Rs. 9500/-</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="install.html" class="btn btn-neutral float-right" title="Installation of the software" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to Remote Triggered Vertical Plotter’s documentation and help page !" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Ashwin Shenoy
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,25 +1,19 @@
 <?php
     include_once '../../db.php';
     session_start();
-
+ 
     if($_SESSION['id']){
-        //do nothing
     }
     else{
-/*         header("Location: ../../login/login.html?Login_to_continue");
-        exit(); */
-    }
+      header("Location: ../../login/login.html?Login_to_continue");
+        exit(); 
+    } 
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- <link rel="icon" href="http://getbootstrap.com/favicon.ico">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous"> -->
-
+<title> NITK </title>
 <link rel="icon" href="http://getbootstrap.com/favicon.ico">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="styles/btheme.min.css">
@@ -37,7 +31,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         .bdy{
-            /* background-image:url('../../images/pic04.jpg'); */
             background-size: cover;
             background-repeat: no-repeat;
             font-family: "Source Sans Pro", Helvetica, sans-serif;
@@ -47,7 +40,7 @@
             border-radius: 10px;
             border-color:transparent;
             margin-bottom: 20px;
-        } /* renuprasad6698@gmail.com */
+        }
         #draw{
             margin-bottom:20px;
         }
@@ -80,9 +73,43 @@
             font-family: 'Raleway', sans-serif;
         }
 
+        .dime span{
+            padding-left:80px;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            padding-top:30px;
+            border-color: white;
+            font-weight:bold;
+            padding-left: 20px;
+            font-family: 'Raleway', sans-serif;
+        }
+        .dime p{
+            font-size:18px;
+            color:red;
+            font-weight:bold;
+            margin-left:40%;
+            font-family: 'Raleway', sans-serif;
+        }
+        
+        .dime button{
+            background-color:lightgreen;
+            border-radius: 5px;
+            bordeR: solid 2px green;
+        }
+
+        .dime input{
+            width: 130px;
+        }
         .inst p{
             padding-left:50px;
-            
+        }
+
+        .inst span{
+            background-color:white;
+            font-weight:bold;
+        }
+        .inst input{
+            background-color:white;
         }
 
         .iii{
@@ -129,41 +156,54 @@
         .input_fields:hover{
             border:solid 2px rgb(120, 120, 236);
         }
-
-        .MyButton {
+        
+        .MyB {
             width: auto;
-            padding: 20px;
+            padding: 17px;
             cursor: pointer;
             font-weight: bold;
             font-size: 150%;
-            border-radius: 0px;
-            background-color: white;
-            color:black;
-            border:solid 3px black;
+            border-radius: 10px;
+            background-color: #f13c20;
+            border:solid 3px white;
             font-size:25px;
+            color:white;
             -webkit-transition: 1s;
             font-family: 'Raleway', sans-serif;
         }
 
-        .MyButton:hover{
-            background-color: #f13c20; 
+        #save{
+            width: 120px;
+            height: 45px;
+            padding: 10px 10px 10px 10px;
+            color: black;
+            font-weight: bold;
             border-radius: 10px;
-            color:seashell;
-            font-family: 'Raleway', sans-serif; 
+            border: solid 2px black;
         }
+
+        #save:hover{
+            text-decoration: none;
+            background-color: black;
+            color: white;
+        }
+
     </style>
 </head>
 <body class="bdy" style="background-color:white;">
     
+<div id="allow" style="display:none;">
     <h2 style="padding-left:43%;margin-bottom:30px;" ><b>INSTRUCTIONS </b></h2>
     <div class="inst">
         <div class="iii">
             <p> The origin of the canvas is located at the top left corner </p>
-            <p> The dimension of the canvas is 1000px in width and 500px in height ONLY in full screen desktop window</p>
+            <p> The dimension of the canvas is 1000px X 500px</p>
             <p style="color:red"><strong> DO NOT RE-SIZE THE BROWSER WINDOW WHILE OR AFTER DRAWING</strong></p>
             <p> You can undo and redo the shapes that include on the canvas, 
                 however you cannot undo and redo the free hand drawing on the canvas</p>
             <p> The origin of the canvas is the top left corner.</p>
+            <p> Set your paper dimension below before you start drawing </p>
+            <p> You will loose your current drawing if you refresh the page </p>
         </div><br>
             <h4 class=""><b>PARAMETERS OF CIRCLE</b></h4>
                 <p> <b>x-coordinate:</b> This is the x-coordinate of the center of the circle.</p>
@@ -199,14 +239,23 @@
 
     </div>
 <br><br>
-<!--         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANsSURBVGhD7dlpqA1hHMfxg+xEsqR4YS9LkiQpW7Y3hBRZSpaQ5QUvSF7YssULeYGQhBTZXogiiqKEZCllSbJmX8q+fH+Tuf3v3OfcO+fcOWfmZH716d7mnJnzPDPzzLNMJk2aNGnyTX10wQAMxTgMwxB0R1MkLnUwGKtxCs/wJ4T3uIAtGIMmKHpqYiT24SNcBc3VD5zGVDREQaOzPxv34CpMVN5AV7g5Is9YhKnAB1zCQWzGGizBCmzAXpzDc7j2t95hMXQCq52WOA7XD8lX6PM56IQaCJvWmIDd0FVwHV9uoRfyTj9ka7x3odssqkZaG2r0ulqu3/uGWcg546GzHTygbq+JUIMvVHQCzyP426LbM3RUCT1F7AF+YSPqoliZBrU5Ww7ZhCrTF7qMdkfdv+rQ4kh7qI3Y8sh8ZE0zPIHd4Sk6I840xkXYculk66Q7o6eH/fJbxF0JP41wDbZ8ulIVHs16vP2G/yX9H9ftlC1t8Aq2MgtQLkdgv7ADScwU2HI+RtlVaYGf8D/8DHWESYw63KuwlRkFL+rY7AfbkORMhi2vBq9e9I/9YCCSHDX8L/DL+whe7sDfqI6wHpKey/DLLOo6Mq/NhvvaUALZA1uRrvCGH/6GG9pQAtHM0lakP8qNZzSqLYXsgq1IT3i3k79Bj95aSHrOwFZEc5vMMbNBvNolODrRmj365VVv72UpbEVWIsnR0MmW9yS8aGBoP9CIN8mP4BOw5Z2OsgSfy5r0JzEautvB7SeUm25rvGIrokavxYQkpQFuw5azwtRXgzGt/Nkv3UQsK4COqHwHYMunRu5c+9J6rR3DiGZmGtvEGVViK2y5ZBKyRhP+4A4aNmtSE0f00NmPYJl2osqsRXDHFxiNYkYr99cRLMtZhF591JJL8AByCB1RyOi1gxqxa11NC3hq9DllIezM0acVDC1UdEOUaQV1xnY0bmndOO91Nb2seQjXgUXtZxF0G+QTtT21S/XOrpMm6grmotrRupJuteDCXdBL6GWPViS1gKYVfL2x0oxTf9VXzcQqHMYDuI5jHUU7RBq1DU2Lv8P1o1FSWxiEgqYtdFbDnNFcaGl2O3qjqFFH1QfLoTPoWnCujG7VK9BtOxzFXCCvNKpYB4zADOhN1Tqs/2cZ5kFtpQf0TiRNmjRp/stkMn8BLmvZrnkvMnEAAAAASUVORK5CYII=">
- -->    
+
+        <!-- <div class="dime">
+         <p> SET YOUR PAPER DIMENSIONS </p>
+            <span style="margin-left:25%;">Length (in cms):<span>
+                 <input id="length" type="number" class="input_fields" placeholder="Length in cms" min="0" max="100">
+            <span>Breadth (in cms):</span> 
+                <input id="breadth" type="number" class="input_fields" placeholder="Breadth in cms" min="0" max="100">
+        <br>
+        <button style="margin-left:48%;" name="submit" onclick="set_dime()">SET </button>
+        </div> -->
+    <br>
     <h1 align="center" style="color:black;font-weight:bold;font-family:Raleway, Helvetica, sans-serif;">
         Draw your Image below
     </h1>
-<!--input id="hex" placeholder="enter hex color"></input-->
+
 <div align="center" style="margin:100">
-    <canvas id="draw" style="border: 2px solid black;width:1000px;height:500px"></canvas>
+    <canvas id="draw" style="border: 2px solid black;width:1000px;height:500px;"></canvas>
 </div>
 
 <div class="ur">
@@ -256,15 +305,20 @@
 
 
 <div align="center">
-    <div  align = "center" style="display: inline-block;padding: 25px">
-        <input class="MyButton" id="upload" type="button" value="Upload and convert to G-CODE">
+    <br>
+    <div align = "center" style="display: inline-block;padding: 25px">
+        <input class="MyB" id="upload" type="button" value="Upload and convert to G-CODE" onclick="showsave()">
     </div>
-    <!-- <button id="save" onclick="save()" style="display:none;"> Save Image </button>  -->
+    <br>
+    <div class="row">
+        <a href="./sim/test.png" id="save" download style="display:none;"> Save Image </a>
 
-    <div align=" center" style="display: inline-block;padding: 25px">
-        <button type="submit" style="padding: 20px;display: none" class="MyButton" id='simulate' onclick="window.location.href='sim/index.php'" >Simulate</button>
+        <div col="col-lg-6 col-md-6 col-sm-6" align="center" style="display: inline-block;padding: 25px">
+            <button type="submit" style="padding: 20px;display: none;margin-top:20px;" class="MyB" id='simulate' 
+            onclick="window.location.href='sim/index.php'" >Simulate</button>
+        </div>
     </div>
-    <div class="alert alert-info" id="loading" style="display: none;" role="alert">
+    <div class="alert alert-info" id="loading" style="display:none;margin-top:20px;" role="alert">
                 Uploading image...
         <div class="progress">
             <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
@@ -274,15 +328,71 @@
     <div id="message" style="color: white;background-color: rgb(42, 218, 42);display: block;"></div>
 
 </div>
+    </div>
+
+    <div id="nallow" style="display:none;">
+        <?php include_once 'wait.php';  ?>
+        
+    </div>
 </body>
+
+<!-- ----------------------------- SCRIPT CODES ----------------------------------- -->
 
 <script type="text/javascript">
     var c = document.getElementById('draw');
     var ctx = c.getContext("2d");
     var urnum = [];
+    var interval;
+        
+    window.onload = function(){
+        check();
+        /* var interval = setInterval(check,5000); */
+        make_reset();
+    }
 
-    window.onload = make_reset();
+    window.onunload = function(){
+        var x = new XMLHttpRequest();
 
+        x.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                //do nothing
+            }
+        }
+        x.open("GET","trial.php");
+        x.send();
+        
+    }
+
+    function check(){
+
+        var exp = 0; //experiment name to decide the table to which we refer to.
+        //0 for plotter, 1 for rubicks etc..
+        //run ajax code to check whether the chance has arrived or not
+        var object = [];
+        object.push(exp); 
+
+        var obj = JSON.stringify(object);
+        
+        var x = new XMLHttpRequest();
+
+        x.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+				var resp = JSON.parse(this.responseText);
+
+                if(resp == 1){
+                    //got the chance
+                    document.getElementById("allow").style.display="block";
+                    document.getElementById("nallow").style.display="none";
+                    clearInterval(interval);
+                }else{
+                    document.getElementById("nallow").style.display="block";
+                    document.getElementById("allow").style.display="none";
+                }
+			}
+        }
+        x.open("GET","check.php");
+        x.send();
+    }
     function make_reset(){
         var reset_image = ctx.getImageData(0,0,1000,500);
         urnum.push(reset_image);
@@ -290,6 +400,10 @@
 
     function reset(){
         ctx.putImageData(urnum[0],0,0);
+    }
+
+    function showsave(){
+        document.getElementById("save").style.display = "block";
     }
 
     /* var urpara = []; */
@@ -353,7 +467,7 @@
         var w = document.getElementById("rw").value;
         var h = document.getElementById("rh").value;
     
-  /*       if(x > 1000 || y > 500 || y+h>500 || x+w>1000){
+        /* if(x > 1000 || y > 500 || y+h>500 || x+w>1000){
             alert("Co-ordinates out of bound");
             exit();   
         } */
@@ -494,8 +608,20 @@
         x.open("GET","save.php?b="+$id,true);
         x.send();
     }
+
+    /* function set_dime(){
+
+        var l = document.getElementById("length").value;
+        var b = document.getElementById("breadth").value;
+        console.log(l+" "+b);
+        var len = String(l*10+"px");
+        var brd = String(b*10+"px");
+
+        var c = document.getElementById("draw");
+        
+        c.style.width = len;
+        c.style.height = brd;
+    } */
 </script>
 
-
 <script src="canvas.js"></script>
-

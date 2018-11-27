@@ -1,0 +1,6 @@
+*~
+rtvpenv
+*.pyc
+plotterapp/*.pyc
+migrations
+rtvp.db

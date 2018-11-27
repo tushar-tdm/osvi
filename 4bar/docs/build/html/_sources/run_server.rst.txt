@@ -1,0 +1,30 @@
+.. _running:
+
+Running the Flask Server
+========================
+
+Now that we have the setup & dependencies up and running, we are ready to work with our web application.
+
+Let's export our flask app::
+
+    (YOUR_VIRTUAL_ENVIRONMENT_NAME)
+    Ashwin Shenoy at Ashwin_Shenoy ~
+    $ export FLASK_APP=plotter.py
+
+On a linux machine, it's simply::
+
+    set FLASK_APP=plotter.py
+
+Once that's done, we run our flask application::
+
+    (YOUR_VIRTUAL_ENVIRONMENT_NAME)
+    Ashwin Shenoy at Ashwin_Shenoy ~
+    $ run flask
+
+After some time, the application should be hosted on port 5000. Going to http://127.0.0.1:5000/, we should see,
+
+.. image:: _static/images/FIRST_PAGE.png
+
+Click on 'Start New Project'
+
+.. image:: _static/images/SECOND_PAGE.png

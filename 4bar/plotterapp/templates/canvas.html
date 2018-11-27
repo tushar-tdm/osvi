@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %} {{project.project_name}} {% endblock %}
+
+{% block funcCall %}onload="loadCanvas({{project.widthPx}}, {{project.heightPx}}, {{project.scale_type}}, {{ project.id }})"{% endblock %}
+
+{% block content %}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/canvas.css') }}">
+	<div id="canvasDiv">
+	</div>
+	<div class="submit-row canvasTools" id="tools">
+		<button type="reset" class="btn btn-danger" id="clearCanvas">Reset</button>
+		<button class="btn btn-success" id="submitCanvas">Submit</button>
+	</div>
+	<script src = "{{ url_for('static', filename='javascript/app.js') }}"></script>
+
+{% endblock %}

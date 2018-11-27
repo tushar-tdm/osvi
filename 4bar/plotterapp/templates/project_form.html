@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %} New Project {% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-offset-3 col-md-offset-3 col-sm-6 col-md-6 col-12">
+			<h2>New Project</h2>
+			<div class="projectForm">
+				<form action="" method="post" novalidate>
+					{{ form.hidden_tag() }}
+					<fieldset>
+						<legend>Project Details</legend>
+						{{ form.project_name.label }}
+						{{ form.project_name }}<br>
+
+						{{ form.scale_type.label }}
+						{{ form.scale_type }}
+					</fieldset>
+					<fieldset>
+						<legend>Art Board Dimensions</legend>
+						{% for error in form.width.errors %}
+							<span style="color:red;">[{{ error }}]</span>
+						{% endfor %}
+						{{ form.width.label }}
+						{{ form.width }}<br>
+
+						{% for error in form.height.errors %}
+							<span style="color:red;">[{{ error }}]</span>
+						{% endfor %}
+						{{ form.height.label }}
+						{{ form.height }}
+					</fieldset>
+					<fieldset>
+						<legend>Bot Configurations</legend>
+						{% for error in form.mounting_distance.errors %}
+							<span style="color:red;">[{{ error }}]</span>
+						{% endfor %}
+						{{ form.mounting_distance.label }}
+						{{ form.mounting_distance }}<br>
+
+						{% for error in form.origin_distance.errors %}
+							<span style="color:red;">[{{ error }}]</span>
+						{% endfor %}
+						{{ form.origin_distance.label }}
+						{{ form.origin_distance }}
+					</fieldset>
+					<p>
+						{{ form.submit() }}
+					</p>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

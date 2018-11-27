@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Remote Trigerred Vertical Plotter{% endblock %}
+
+{% block content %}
+
+	<div class="text-center">
+		<h3>Rendered Image</h3>
+		<img src="{{ canvas.image_url }}" alt="{{ canvas.image_filename }}" />
+	</div>
+
+{% endblock %}

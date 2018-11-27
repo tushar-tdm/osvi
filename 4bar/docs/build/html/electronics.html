@@ -1,0 +1,361 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Understanding the circuit used for the project &mdash; Remote Triggered Vertical Plotter 1.0.a documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Drawing on the canvas" href="painting.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Remote Triggered Vertical Plotter
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="start_project.html">Running our application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calibration.html">Calibration of the bot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulation.html">Simulation of the bot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="painting.html">Drawing on the canvas</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Understanding the circuit used for the project</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#diagrams">1.0. Diagrams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#components-used-for-the-project">2.0. Components used for the project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#specifications-of-the-components-used">3.0. Specifications of the components used</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#arduino-nano">3.1. Arduino Nano</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rotary-encoders">3.2. Rotary Encoders</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#a-rotary-quadrature-encoder-600ppr-2400cpr">3.2.a. Rotary quadrature encoder 600PPR/2400CPR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#b-power-and-input-terminal-assignment">3.2.b. Power and input terminal assignment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c-diagrams">3.2.c. Diagrams</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#connections">4.0. Connections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#arduino-nano-motor-driver-connections">4.1. Arduino nano &amp; motor driver connections</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Remote Triggered Vertical Plotter</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Understanding the circuit used for the project</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/electronics.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="understanding-the-circuit-used-for-the-project">
+<span id="electronics"></span><h1>Understanding the circuit used for the project<a class="headerlink" href="#understanding-the-circuit-used-for-the-project" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="diagrams">
+<h2>1.0. Diagrams<a class="headerlink" href="#diagrams" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/NANO.png"><img alt="_images/NANO.png" class="align-center" src="_images/NANO.png" style="width: 400px; height: 400px;" /></a>
+<p class="centered">
+<strong><strong>Fig 1</strong>: Arduino nano’s connection to rotary encoders (connections going below) &amp; motor drivers (connections going above).</strong></p><a class="reference internal image-reference" href="_images/PCB.png"><img alt="_images/PCB.png" class="align-center" src="_images/PCB.png" style="width: 400px; height: 400px;" /></a>
+<p class="centered">
+<strong><strong>Fig 2</strong>: PCB design of fig 1.</strong></p></div>
+<div class="section" id="components-used-for-the-project">
+<h2>2.0. Components used for the project<a class="headerlink" href="#components-used-for-the-project" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Arduino Nano</li>
+<li>Rotary Encoders</li>
+<li>Motor Drivers (L293D)</li>
+<li>DC Motors</li>
+<li>LIPO Batteries</li>
+</ol>
+</div>
+<div class="section" id="specifications-of-the-components-used">
+<h2>3.0. Specifications of the components used<a class="headerlink" href="#specifications-of-the-components-used" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="arduino-nano">
+<h3>3.1. Arduino Nano<a class="headerlink" href="#arduino-nano" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="rotary-encoders">
+<h3>3.2. Rotary Encoders<a class="headerlink" href="#rotary-encoders" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="a-rotary-quadrature-encoder-600ppr-2400cpr">
+<h4>3.2.a. Rotary quadrature encoder 600PPR/2400CPR<a class="headerlink" href="#a-rotary-quadrature-encoder-600ppr-2400cpr" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="22%" />
+<col width="29%" />
+<col width="17%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2">General Specifications</td>
+<td colspan="2">Electrical Specifications</td>
+</tr>
+<tr class="row-even"><td colspan="2">Outer Diameter (mm)     |        38</td>
+<td colspan="2">Working Voltage(V)   |    5-24V</td>
+</tr>
+<tr class="row-odd"><td>Shaft Type</td>
+<td>D</td>
+<td>Working Current (mA)</td>
+<td>&lt;=60 mA</td>
+</tr>
+<tr class="row-even"><td>Shaft Diameter (mm)</td>
+<td>6</td>
+<td>Output wave</td>
+<td>Square wave</td>
+</tr>
+<tr class="row-odd"><td>Phase</td>
+<td>A, B</td>
+<td>Frequency (KHz)</td>
+<td>0-200</td>
+</tr>
+<tr class="row-even"><td>Operational Temperature</td>
+<td>10 ~ 70 degrees</td>
+<td>Max RPM</td>
+<td>5000</td>
+</tr>
+<tr class="row-odd"><td>Protection Degree</td>
+<td>IP 54</td>
+<td>Weight (gms)</td>
+<td>250</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="b-power-and-input-terminal-assignment">
+<h4>3.2.b. Power and input terminal assignment<a class="headerlink" href="#b-power-and-input-terminal-assignment" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="17%" />
+<col width="14%" />
+<col width="55%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Terminal No</td>
+<td>Terminal Name</td>
+<td>Wire Color</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>Terminal 1</td>
+<td>Enc A</td>
+<td>White</td>
+<td>Quadrature encoded output A</td>
+</tr>
+<tr class="row-odd"><td>Terminal 2</td>
+<td>Enc B</td>
+<td>Green</td>
+<td>Quadrature encoded output B</td>
+</tr>
+<tr class="row-even"><td>Terminal 3</td>
+<td>VCC</td>
+<td>Red</td>
+<td>VCC should be connected to +5V</td>
+</tr>
+<tr class="row-odd"><td>Terminal 4</td>
+<td>GND</td>
+<td>Black</td>
+<td>GND should be connected to negative of supply</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="c-diagrams">
+<h4>3.2.c. Diagrams<a class="headerlink" href="#c-diagrams" title="Permalink to this headline">¶</a></h4>
+<img alt="_images/REncoder.png" class="align-center" src="_images/REncoder.png" />
+<p class="centered">
+<strong><strong>Fig 3</strong>: Rotary Encoder (All dimensions in mm)</strong></p></div>
+</div>
+</div>
+<div class="section" id="connections">
+<h2>4.0. Connections<a class="headerlink" href="#connections" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="arduino-nano-motor-driver-connections">
+<h3>4.1. Arduino nano &amp; motor driver connections<a class="headerlink" href="#arduino-nano-motor-driver-connections" title="Permalink to this headline">¶</a></h3>
+<p>D2 &amp; D3 pins which are Interrupt pins 0 &amp; 1 are connected to encoder B’s of rotary encoders.</p>
+<p>D4 &amp; D5 are connected to encoder A of the rotary encoders respectively.</p>
+<p>D8, D9 &amp; D10 are given as inputs and enable pin one of the motor drivers respectively.</p>
+<p>D11, D12 &amp; D13 are given as inputs and enable pin to the other motor driver respectively.</p>
+<p>Common 5V and ground connections are made.</p>
+<p>DC Motors are connected to the output pins of the motor drivers.</p>
+<p>LIPO Batteries are connected to drive the DC motors.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="painting.html" class="btn btn-neutral" title="Drawing on the canvas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Ashwin Shenoy
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
