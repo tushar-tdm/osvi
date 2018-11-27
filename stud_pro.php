@@ -28,6 +28,12 @@
 		$result = mysqli_query($conn,$sql);
 	}
 
+	if($_SESSION['rubick'] == 1){
+		$_SESSION['rubick'] = 0;
+		$sql = "DELETE FROM rtoken WHERE u_id='$id'";
+		$result = mysqli_query($conn,$sql);
+	}
+
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -97,7 +103,7 @@
 											<a href="plotter/html/index.php">2D-Plotter</a><br>
 											<a href="led/rta.php">LED Control</a><br>
 											<a href="prabhu/index.php">BARLINKAGE CONTROL</a><br>
-											<a href="#">Experiment 4</a><br>
+											<a href="rubick/index.php">Rubick</a><br>
 											<a href="#">Experiment 5</a><br>
 											<a href="#">Experiment 6</a>
 										</div>

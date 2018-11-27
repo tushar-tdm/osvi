@@ -104,9 +104,11 @@ if(isset($_POST['signup']))
 						mysqli_query($conn,$sql);
 					}
 					$_SESSION['id'] = $uid;
-					$_SESSION['teacher'] = 1;
+					$_SESSION['teacher'] = 0;
+					$_SESSION['2d'] = 0;
+					$_SESSION['rubick'] = 0;
 
-					header("Location: tech_pro.php?signup=success");
+					header("Location: stud_pro.php?signup=success");
 					exit();
 				}
 			}

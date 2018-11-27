@@ -1,3 +1,17 @@
+<?php
+    include_once '../db.php';
+    session_start();
+ 
+    if($_SESSION['id']){
+        $_SESSION['rubick'] = 1;
+    }
+    else{
+      header("Location: ../login/login.html?Login_to_continue");
+        exit(); 
+    } 
+
+?>
+
 <html>
     <head>
             <link rel="icon" href="http://getbootstrap.com/favicon.ico">
@@ -10,7 +24,11 @@
     </head>
     <!-- <h3> </h3> -->
     <body>
-        <h2 class="heading">REMOTE TRIGGERED RUBIK'S CUBE BOT </h2>
+    <div id="nallow" style="display:none;">
+        <?php include_once 'wait.php'; ?>
+    </div>
+    <div id="allow" style="display:none;">
+        <h2 class="heading" style="color:white;">REMOTE TRIGGERED RUBIK'S CUBE BOT </h2>
     <div class="container" style="margin-top: 40px;">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -46,7 +64,7 @@
             </div>
         </div>
     </div>
-
+    </div>
     </body>
 
     <script>
@@ -61,5 +79,55 @@
             x.send(); 
         }
  
+        var interval;
+        
+    window.onload = function(){
+        check();
+        interval = setInterval(check,5000); 
+    }
+
+    window.onunload = function(){
+        var x = new XMLHttpRequest();
+
+        x.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                //do nothing
+            }
+        }
+        x.open("GET","trial.php");
+        x.send();
+        
+    }
+
+    function check(){
+
+        var exp = 0; //experiment name to decide the table to which we refer to.
+        //0 for plotter, 1 for rubicks etc..
+        //run ajax code to check whether the chance has arrived or not
+        var object = [];
+        object.push(exp); 
+
+        var obj = JSON.stringify(object);
+        
+        var x = new XMLHttpRequest();
+
+        x.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+				var resp = JSON.parse(this.responseText);
+
+                if(resp == 1){
+                    //got the chance
+                    document.getElementById("allow").style.display="block";
+                    document.getElementById("nallow").style.display="none";
+                    clearInterval(interval);
+                }else{
+                    document.getElementById("nallow").style.display="block";
+                    document.getElementById("allow").style.display="none";
+                }
+			}
+        }
+        x.open("GET","check.php");
+        x.send();
+    }
     </script>
 </html>

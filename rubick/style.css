@@ -17,7 +17,7 @@ img{
 }
 
 body{
-    background-image: url("/images/rubiksimg.jpg");
+    background-image: url("images/rubiksimg.jpg");
     /*opacity: 0; */
 }
 
