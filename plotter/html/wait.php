@@ -1,19 +1,28 @@
 <?php 
     include_once '../../db.php';
-/*     session_start(); */
 
     $uid = $_SESSION['id'];
 
     // take the current number and subtract first number from it.
-    $sql = "SELECT token_num FROM token WHERE u_id = '$uid'";
+    /* $sql = "SELECT token_num FROM token WHERE u_id = '$uid'";
     $result = mysqli_query($conn,$sql);
-    $num1 = mysqli_fetch_assoc($result); 
+    $num1 = mysqli_fetch_assoc($result);    
 
     $sql = "SELECT token_num from token order by token_num ASC limit 1";
     $r = mysqli_query($conn,$sql);
     $num2 = mysqli_fetch_assoc($r);
 
-    $num = $num1['token_num'] - $num2['token_num'];
+    $n = (int)$num1['token_num'] - (int)$num2['token_num']; */
+    $sss = "SELECT * FROM token order by token_num ASC";
+    $result = mysqli_query($conn,$sss);
+    $count = 0;
+
+    while($row = mysqli_fetch_assoc($result)){
+        if($row['u_id'] == $uid)
+            break;
+        else
+            $count++;
+    }
 
 ?>
 <html>
@@ -59,7 +68,7 @@
                 <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12 wcontent">
                     <h1 class="wh1"> - NOTE -  </h1>
                     <p class="wp"> There are other users using the 2D plotter. </p>
-                    <p class="wp"> Your number in queue is <?php echo $num; ?> </p>
+                    <p class="wp"> Your number in queue is <?php echo $count; ?> </p>
                     <h3 class="wh3"> ALERT: </h3>
                     <p class="wp"> Please <span class="ws"> DO NOT </span>do the following if you want to stay in the queue:</p>
                         <ul class="wul">

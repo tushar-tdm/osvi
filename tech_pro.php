@@ -6,24 +6,39 @@
 		header("Location: login/login.html");
 	}
 
-	$id = $_SESSION['id'];
+	if($_SESSION['id'])
+	{
+		$id = $_SESSION['id'];
 
-	$sql = "SELECT * FROM users4 WHERE u_id='$id'";
-	$result = mysqli_query($conn,$sql);
-	$n = mysqli_num_rows($result);
-	$row = mysqli_fetch_assoc($result);
+		$sql = "SELECT * FROM users4 WHERE u_id='$id'";
+		$result = mysqli_query($conn,$sql);
+		$n = mysqli_num_rows($result);
+		$row = mysqli_fetch_assoc($result);
 
-	$fname = $row['fname'];
-	$lname = $row['lname'];
-	$roll = $row['u_id'];
-	$email = $row['email'];
-	$phone = $row['phone'];
+		$fname = $row['fname'];
+		$lname = $row['lname'];
+		$roll = $row['u_id'];
+		$email = $row['email'];
+		$phone = $row['phone'];
 
-	$sql = "SELECT * FROM images";
-	$result = mysqli_query($conn,$sql);
-	$row = mysqli_fetch_assoc($result);
-	$format = $row['format'];
-	$stat = $row['stat'];
+		$sql = "SELECT * FROM images WHERE `user_id` = '$id'";
+		$result = mysqli_query($conn,$sql);
+		$row = mysqli_fetch_assoc($result);
+		$format = $row['format'];
+		$stat = $row['stat'];
+	}
+
+	if($_SESSION['2d'] == 1){
+		$_SESSION['2d'] = 0;
+		$sql = "DELETE FROM token WHERE u_id = '$id'";
+		$result = mysqli_query($conn,$sql);
+	}
+
+	if($_SESSION['rubick'] == 1){
+		$_SESSION['rubick'] = 0;
+		$sql = "DELETE FROM rtoken WHERE u_id='$id'";
+		$result = mysqli_query($conn,$sql);
+	}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -32,6 +47,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" type="image/gif" href="uploads/nitk.png" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
@@ -156,36 +172,44 @@
 										<?php
 											$sql = "SELECT * FROM recent ORDER BY doe DESC";
 											$result = mysqli_query($conn,$sql);
-
+											$count = 0;
 											while($row = mysqli_fetch_assoc($result)){
 												$userid = $row['user_id'];
-
+												
 												// these are saple users so dont have these entries in images and 
 												// users4 table. so make valid users entry and check expain.
-												$sql = "SELECT * FROM images WHERE `user_id` = $userid";
-												$result2 = mysqli_query($conn,$result2);
+												$sql = "SELECT * FROM `images` WHERE `user_id` = '$userid'";
+												$result2 = mysqli_query($conn,$sql);
 												$row2 = mysqli_fetch_assoc($result2);
 												
 												$f = $row2['format']; $s = $row2['stat'];
-												if($s == 1){
+												if($s == 1){	
 													$picloc = "uploads/profile/".$userid.".".$f;
 												}else{
 													$picloc = "uploads/default.jpg";
 												}
 
-												$sql = "SELECT * FROM users4 WHERE user_id=$userid";
+												$sql = "SELECT * FROM `users4` WHERE `u_id`='$userid'";
 												$result3 = mysqli_query($conn,$sql);
 												$row3 = mysqli_fetch_assoc($result3);
+												$_SESSION['xyz'] = $row3['u_id'];
 
 										?> 
 										<article>
-											
 											<a class="image"><img src="<?php echo $picloc; ?>" alt="profile" /></a>
 											<h3 class="major"><?php echo $row3['fname']; ?></h3>
 											<p><?php echo $row['exp']; ?></p> <!-- user_id is the roll no for the students -->
-											<a href="stud_pro.php" class="special" style="margin-left:-20px;margin-top:-20px; ">Profile</a>
+											
+											<form id="<?php echo "myform".$count; ?>" action="result_display.php" method="POST">
+												<input type="number" name="picnum" value="<?php echo $row['picnum']; ?>" style="display:none;">
+												<input type="text" name="user" value="<?php echo $row['user_id']; ?>" style="display:none;">	
+											<a onclick="submitform(<?php echo $count; ?>)" class="special" style="margin-left:-20px;margin-top:-20px;cursor:pointer;" 
+											type="submit">Profile</a>
+											</form>
+								
 										</article>
 										 <?php
+										 		$count++;
 											}
 										?> 
 									</section>
@@ -242,6 +266,13 @@
 				function show_exp(exp){
 					var x = document.getElementsByClassName("experiment")[exp-1];
 					x.style.display = "block";
+				}
+
+				function submitform(c){
+					console.log(c);
+					var idd = "myform"+c;
+					var i = idd.toString();					
+					document.getElementById(i).submit();
 				}
 			</script>
 	</body>

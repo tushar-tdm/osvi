@@ -14,7 +14,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <title> NITK </title>
-<link rel="icon" href="http://getbootstrap.com/favicon.ico">
+<link rel="icon" type="image/gif" href="../../uploads/nitk.png" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="styles/btheme.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
@@ -83,23 +83,7 @@
             padding-left: 20px;
             font-family: 'Raleway', sans-serif;
         }
-        .dime p{
-            font-size:18px;
-            color:red;
-            font-weight:bold;
-            margin-left:40%;
-            font-family: 'Raleway', sans-serif;
-        }
-        
-        .dime button{
-            background-color:lightgreen;
-            border-radius: 5px;
-            bordeR: solid 2px green;
-        }
 
-        .dime input{
-            width: 130px;
-        }
         .inst p{
             padding-left:50px;
         }
@@ -168,24 +152,36 @@
             border:solid 3px white;
             font-size:25px;
             color:white;
+            margin-top:20px;
             -webkit-transition: 1s;
             font-family: 'Raleway', sans-serif;
         }
 
-        #save{
+        #save , .save {
             width: 120px;
             height: 45px;
+            margin: 20px 20px 20px 20px;
             padding: 10px 10px 10px 10px;
-            color: black;
+            color: white;
             font-weight: bold;
             border-radius: 10px;
-            border: solid 2px black;
+            border: solid 2px #0000b3;
+            background-color:#1a1aff;
+            cursor:pointer;
         }
 
-        #save:hover{
-            text-decoration: none;
-            background-color: black;
+        #submit{
+            background-color:#55ff00;
             color: white;
+            border:solid 2px #3bb300;
+            cursor:pointer;
+        }
+
+        #simulate{
+            background-color:#ff5c33;
+            color: white;
+            border:solid 2px #e62e00;
+            cursor:pointer;
         }
 
     </style>
@@ -266,7 +262,7 @@
 
 <div class="icons row">
     <div class="circle col-lg-3 col-md-3 col-sm-3" style="margin-left:10px;">
-        <label style="color:white;"> CIRCLE </label><br>
+        <label style="color:black;"> CIRCLE </label><br>
         <input class="input_fields" type="number" id="cx" placeholder="x-coordinate" ><br>
         <input class="input_fields" type="number" id="cy" placeholder="y-coordinate" ><br>
         <input class="input_fields" type="number" id="cr" placeholder="radius" ><br>
@@ -274,7 +270,7 @@
         <button class="include" type="button" onclick="add_circle()">ADD</button>
     </div>
     <div class="recatangle col-lg-3 col-md-3 col-sm-3">
-            <label style="color:white;"> RECTANGLE </label><br>
+            <label style="color:black;"> RECTANGLE </label><br>
         <input class="input_fields" type="number" placeholder="x-coordinate" id="rx"><br>
         <input class="input_fields" type="number" placeholder="y-coordinate" id="ry"><br>
         <input class="input_fields" type="number" placeholder="width" id="rw"><br>
@@ -282,7 +278,7 @@
         <button class="include" type="button" onclick="add_rect()">ADD</button>
     </div>
     <div class="oval col-lg-3 col-md-3 col-sm-3">
-            <label style="color:white;"> ELLIPSE </label><br>
+            <label style="color:black;"> ELLIPSE </label><br>
         <input class="input_fields" type="number" placeholder="x-coordinate" id="oax1"><br>
         <input class="input_fields" type="number" placeholder="y-coordinate" id="oay1"><br>
         <input class="input_fields" type="number" placeholder="radius-x" id="oax2"><br>
@@ -294,7 +290,7 @@
         <button class="include" type="button" onclick="add_oval()">ADD</button>
     </div>
     <div class="line col-lg-2 col-md-3 col-sm-3">
-            <label style="color:white;"> LINE </label><br>
+            <label style="color:black;"> LINE </label><br>
         <input class="input_fields" type="number" placeholder="x1" id="lx1"><br>
         <input class="input_fields" type="number" placeholder="y1" id="ly1"><br>
         <input class="input_fields" type="number" placeholder="x2" id="lx2"><br>
@@ -309,13 +305,15 @@
     <div align = "center" style="display: inline-block;padding: 25px">
         <input class="MyB" id="upload" type="button" value="Upload and convert to G-CODE" onclick="showsave()">
     </div>
-    <br>
-    <div class="row">
-        <a href="./sim/test.png" id="save" download style="display:none;"> Save Image </a>
-
-        <div col="col-lg-6 col-md-6 col-sm-6" align="center" style="display: inline-block;padding: 25px">
-            <button type="submit" style="padding: 20px;display: none;margin-top:20px;" class="MyB" id='simulate' 
-            onclick="window.location.href='sim/index.php'" >Simulate</button>
+    <br>            
+        <div class="container">
+        <div class="row">
+            <div col="col-lg-12 col-md-12 col-sm-6" align="center" style="display:inline-block;padding: 25px;">
+                <a class="col-lg-3" href="./sim/test.png" id="save" download style="display:none;"> Save Image </a>
+                <button class="save col-lg-3" id="submit" onclick="submitpic()" style="display:block;"> Submit </button>
+                <button type="submit" style="display: none;" class="save col-lg-3" id='simulate' 
+                onclick="window.location.href='sim/index.php'">Simulate</button>
+            </div>
         </div>
     </div>
     <div class="alert alert-info" id="loading" style="display:none;margin-top:20px;" role="alert">
@@ -404,6 +402,7 @@
 
     function showsave(){
         document.getElementById("save").style.display = "block";
+        document.getElementById("submit").style.display = "block";
     }
 
     /* var urpara = []; */
@@ -594,8 +593,7 @@
     }
 
     function save(){
-/*         $uid = $_SESSION['id']; */
-    console.log("save called");
+
         $uid = "tdm";
         $id = JSON.stringify($uid);
         var x = new XMLHttpRequest();
@@ -609,19 +607,17 @@
         x.send();
     }
 
-    /* function set_dime(){
-
-        var l = document.getElementById("length").value;
-        var b = document.getElementById("breadth").value;
-        console.log(l+" "+b);
-        var len = String(l*10+"px");
-        var brd = String(b*10+"px");
-
-        var c = document.getElementById("draw");
-        
-        c.style.width = len;
-        c.style.height = brd;
-    } */
+    function submitpic(){
+        //console.log("entered here");
+        var x = new XMLHttpRequest();
+        x.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                //do nothing
+            }
+        };
+        x.open("GET","submit.php");
+        x.send();
+    }
 </script>
 
 <script src="canvas.js"></script>

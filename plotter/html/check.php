@@ -1,7 +1,7 @@
 <?php
     include_once '../../db.php';
     session_start();
-
+    
     //$obj = json_decode($_GET["b"],false);
 
     $uid = $_SESSION['id'];
@@ -42,6 +42,7 @@
                 $sql = "INSERT INTO token VALUES ('$uid','$d','$n1')";
                 $result = mysqli_query($conn,$sql);
                 $tnum = 0;
+                
             }else if($num_of_ppl > 1){
                 //check if he is the first among them
                 $sql2 = "SELECT * FROM token ORDER BY ttoken ASC";
@@ -49,8 +50,9 @@
                 $row2 = mysqli_fetch_assoc($result2);
                 if($row2['u_id']== $uid)
                     $tnum =1;
-                else
+                else{
                     $tnum = 0;
+                }
             }
 
         }

@@ -5,6 +5,17 @@
     if($_SESSION['id']){
         $uid = $_SESSION['id'];
         $_SESSION['2d'] = 1;
+
+        $sql = "SELECT token_num FROM token WHERE u_id = '$uid'";
+        $result = mysqli_query($conn,$sql);
+        $num1 = mysqli_fetch_assoc($result);    
+
+        $sql = "SELECT token_num from token order by token_num ASC limit 1";
+        $r = mysqli_query($conn,$sql);
+        $num2 = mysqli_fetch_assoc($r);
+
+        $n = (int)$num1['token_num'] - (int)$num2['token_num'];
+
     }
     else{
         header("Location: ../../login/login.html?Login_to_continue");
@@ -14,7 +25,7 @@
 ?>
 <head>
     <title> NITK </title>
-    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
+    <link rel="icon" type="image/gif" href="../../uploads/nitk.png" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/btheme.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
@@ -48,9 +59,12 @@
     <script>
     
     </script>
+    <!-- If he is not allowed to access the webpage -->
     <div id="nallow" style="display:none;">
         <?php  include_once 'wait.php'; ?>
-        <!-- <h1> Your Turn has NOT yet arrived. Please Wait </h1> -->
+        <script>
+            //location.reload();
+        </script>
     </div>
     <div id="allow" style="display:none;">
         <h1>Web based 2D Sketcher</h1>
@@ -92,7 +106,6 @@
     }
 
     function check(){
-
         var exp = 0; //experiment name to decide the table to which we refer to.
         //0 for plotter, 1 for rubicks etc..
         //run ajax code to check whether the chance has arrived or not

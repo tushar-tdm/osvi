@@ -12,3 +12,11 @@
  https://www.youtube.com/watch?v=kSHbXWS24aE
  https://www.youtube.com/watch?v=d5yNZs_pQx4
  http://trevorappleton.blogspot.com/2014/03/remotely-copy-files-to-and-from-your.html (same network)
+
+
+ things left to do
+ -> action = off for led 
+
+ -> should i give the access for teacher to make projects? yes.. so put the check code for teachers as well
+
+ -> remote access for 2d plotter -> online hosting a web page to upload a text file. 

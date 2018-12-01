@@ -1,19 +1,28 @@
 <?php
 	session_start();
 	include_once 'db.php';
+
+	//check whether it is a teacher visit.
+	
 	$id = $_SESSION['id'];
 	
 	if($id){
 		$sql = "SELECT * FROM users4 WHERE u_id='$id'";
-	$result = mysqli_query($conn,$sql);
-	$n = mysqli_num_rows($result);
-	$row = mysqli_fetch_assoc($result);
+		$result = mysqli_query($conn,$sql);
+		$n = mysqli_num_rows($result);
+		$row = mysqli_fetch_assoc($result);
 
-	$fname = $row['fname'];
-	$lname = $row['lname'];
-	$roll = $row['u_id'];
-	$email = $row['email'];
-	$phone = $row['phone'];
+		$fname = $row['fname'];
+		$lname = $row['lname'];
+		$roll = $row['u_id'];
+		$email = $row['email'];
+		$phone = $row['phone'];
+
+		$sql = "SELECT * FROM images WHERE `user_id` = '$id'";
+		$result = mysqli_query($conn,$sql);
+		$row = mysqli_fetch_assoc($result);
+		$format = $row['format'];
+		$stat = $row['stat'];
 	
 	}
 
@@ -38,10 +47,11 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Solid State by HTML5 UP</title>
+		<title>NITK</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" type="image/gif" href="uploads/nitk.png" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
 	</head>
@@ -78,7 +88,18 @@
 									<p class="name" style="font-size:25px;"> <?php echo $roll; ?></p>
 								</div>
 								<div class="col-lg-6">	
-									<img src="uploads/default.jpg" class="dp_container col-lg-offset-5 col-md-offset-4 col-sm-offset-4 col-xs-offset-2">
+								<?php
+									if($stat == 1){
+									?>
+										<img src="<?php echo "uploads/profile".$id.".".$format; ?>" class="dp_container col-lg-offset-5 col-md-offset-4 col-sm-offset-4 col-xs-offset-2" alt="abc">
+									<?php 
+										}
+									else{
+									?>
+										<img src="<?php echo "uploads/default.jpg" ?>" class="dp_container col-lg-offset-5 col-md-offset-4 col-sm-offset-4 col-xs-offset-2" alt="def">
+									<?php
+										}
+									?>
 								</div>
 							</div>
 						</div>
