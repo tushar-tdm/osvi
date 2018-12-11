@@ -58,7 +58,7 @@
 	<body class="is-preload">
 			<div id="page-wrapper">
 					<header id="header" class="alt">
-						<h1><a href="index.html">OSVI</a></h1>
+						<h1><a href="index.html">NITK</a></h1>
 						<nav>
 							<a href="#menu">Menu</a>
 						</nav>
@@ -76,9 +76,7 @@
 							<a href="#" class="close">Close</a>
 						</div>
 					</nav>
-				
-
-				
+								
 					<section id="banner">
 						<div class="inner">
 							<div class="container">

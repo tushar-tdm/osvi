@@ -11,7 +11,13 @@ $gcode = array_slice($gcode, 4);
 <head>
     <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-    <title>g-code simulator</title>
+
+    <link rel="icon" type="image/gif" href="../../uploads/nitk.png" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/btheme.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+
+    <title>NITK</title>
     <script src="webapp/libs/require.js"></script>
     <script src="webapp/config.js"></script>
     <script>
@@ -95,20 +101,77 @@ $gcode = array_slice($gcode, 4);
         }
 
         #app {
+            margin-top: 50px;
             position: relative;
+        }
+
+        .plotb{
+            border-radius: 10px;
+            margin-left: 43%;
+            margin-top: 30px;
+            border:solid 2px #f13c20;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            font-weight:bold;
+            background-color: #f13c20;
+            width:150px;
+            height: 60px;
+            color:white;
+            cursor:pointer;
+        }
+
+        h1{
+            color: #00cc00;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        #save , .save {
+            width: 120px;
+            height: 45px;
+            margin-bottom: 10px;
+            margin-left: 44%;
+            padding: 10px 10px 10px 10px;
+            color: white;
+            font-weight: bold;
+            border-radius: 10px;
+            border: solid 2px #0000b3;
+            background-color:#1a1aff;
+            cursor:pointer;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
 
-
 <h1 align="center">G-Code simulator</h1>
+
+<div class="plot container">
+    <form action="../plot.php" enctype="multipart/form-data" method="POST">
+    <span class="row">
+        <a class="col-lg-3 col-lg-offset-3" href="./test.gcode" id="save" download> Save Image </a><br>
+        <button class="col-lg-3 plotb" type="submit" value="PLOT" id="plotbutton" onclick="salert()">PLOT </button>
+    </span>
+    </form>
+</div>
 
 <div id="app">
 
 </div>
+
 <script id="demoCode" type="application/gcode">    
 </script>
+
+<!-- ///////////////////////////////////// my script code .///////////////////////////////////////// -->
+<script>
+    function show(){
+        document.getElementById("plotbutton").style.display = "block";
+    }
+
+    window.onload = function(){
+        alert("Please SAVE IMAGE before plotting the image");
+    }
+</script>
+
 <script>
     require(['Ember', 'cnc/ui/graphicView', 'cnc/cam/cam', 'cnc/util', 'cnc/ui/gcodeEditor', 'cnc/gcode/gcodeSimulation', 'templates'],
             function (Ember, GraphicView, cam, util, gcodeEditor, gcodeSimulation) {

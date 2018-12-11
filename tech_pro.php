@@ -192,7 +192,6 @@
 												$sql = "SELECT * FROM `users4` WHERE `u_id`='$userid'";
 												$result3 = mysqli_query($conn,$sql);
 												$row3 = mysqli_fetch_assoc($result3);
-												$_SESSION['xyz'] = $row3['u_id'];
 
 										?> 
 										<article>
@@ -269,7 +268,6 @@
 				}
 
 				function submitform(c){
-					console.log(c);
 					var idd = "myform"+c;
 					var i = idd.toString();					
 					document.getElementById(i).submit();

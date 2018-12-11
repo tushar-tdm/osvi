@@ -2,7 +2,6 @@
     include_once 'db.php';
     session_start();
 
-    /* $un = $_SESSION['xyz'];  */
     $un = mysqli_real_escape_string($conn,$_POST['user']);
     $picnum = mysqli_real_escape_string($conn,$_POST['picnum']);
 

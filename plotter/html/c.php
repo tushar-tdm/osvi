@@ -310,7 +310,7 @@
         <div class="row">
             <div col="col-lg-12 col-md-12 col-sm-6" align="center" style="display:inline-block;padding: 25px;">
                 <a class="col-lg-3" href="./sim/test.png" id="save" download style="display:none;"> Save Image </a>
-                <button class="save col-lg-3" id="submit" onclick="submitpic()" style="display:block;"> Submit </button>
+                <button class="save col-lg-3" id="submitt" onclick="submitpic()" style="display:none;"> Submit </button>
                 <button type="submit" style="display: none;" class="save col-lg-3" id='simulate' 
                 onclick="window.location.href='sim/index.php'">Simulate</button>
             </div>
@@ -402,7 +402,7 @@
 
     function showsave(){
         document.getElementById("save").style.display = "block";
-        document.getElementById("submit").style.display = "block";
+        document.getElementById("submitt").style.display = "block";
     }
 
     /* var urpara = []; */

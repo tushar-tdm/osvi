@@ -76,7 +76,7 @@
             </div>
             <div style="width:300px; margin:10 auto;">
                 <form>
-                    <input class="MyButton" type="button" value="Draw your Image" onclick="window.location.href='c.php'" />
+                    <input class="MyButton" type="button" value="Draw your Image" onclick="window.location.href='curl.php'" />
                 </form>
             </div>
         </div>
