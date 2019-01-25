@@ -1,0 +1,24 @@
+<html>
+<body>
+    This keeps checking whether a new file has been received.
+</body>
+
+<script>
+    window.onload = function(){
+        setInterval(callscan,1000);
+    }
+
+    function callscan(){
+        var x = new XMLHttpRequest();
+
+        x.onreadystatechange = function(){
+            if(this.status == 200 && this.readyState == 4){
+                //do nothing
+            }
+        };
+
+        x.open("GET","scan.php",true);
+        x.send();
+    }
+</script>
+</html>

@@ -18,8 +18,6 @@
     $data = array("timestamp"=>$time);
     $string = http_build_query($data);
 
-    //here the actual website
-
     $ch = curl_init("http://nitkosvi.000webhostapp.com/plotter.php");
     curl_setopt($ch,CURLOPT_POST, true);
     curl_setopt($ch,CURLOPT_POSTFIELDS, $string);

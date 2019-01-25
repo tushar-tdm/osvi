@@ -1,11 +1,10 @@
 <?php
+    include_once '../../db.php';
 
-    include_once 'db.php';
-
-    $time = mysqli_real_escape_string($conn,$_POST['timestamp']);
-
+    $time = mysqli_real_escape_string($conn,$_POST['times']);
+	
     $file = $_FILES['file'];
-	if($_FILES['file']['error'] != 4)		//4 indicates that no file was selected.
+	if($_FILES['file']['error'] != 4)		//4 indicates that no file was selected
 	{
 		$fileName = $_FILES['file']['name'];
 		$fileSize = $_FILES['file']['size'];
@@ -28,12 +27,8 @@
 					$fileNewName = $time.".gcode";
 					$fileDestination = "uploads/".$fileNewName;
 					move_uploaded_file($fileTmpName, $fileDestination);
-					$sql = "INSERT INTO images (user_id,stat,format,num) VALUES ('$uid',1,'$fileActualExt',1)";	
-						mysqli_query($conn,$sql);
-						
-					//now call the php script to send the file through ftp.
-					header("Location: phpftp.php");
-					exit();
+					//file transfer successfull so call python code
+					shell_exec("python /var/www/html/pyplotter.py ".$fileNewName." 2>&1");
             	}
 			}else{
 				echo "files of this type are not allowed";
@@ -41,7 +36,7 @@
 			}
 	}
 	else{
-        header("Location: http://nitkosvi.000webhostapp.com/plotter.php?Please_choose_a_file");
+        header("Location: http://192.168.3.1/plotter.php?Please_choose_a_file");
         exit();
     }
 

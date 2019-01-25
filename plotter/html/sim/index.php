@@ -1,12 +1,24 @@
-<!DOCTYPE html >
 <?php
-//header('Content-type: test/plain');
-$file = "./test.gcode";
-$file_content = file_get_contents($file);
-$gcode = explode("\n",$file_content);
-$gcode = array_slice($gcode, 4);
+    include_once '../../../db.php';
+    session_start();
+
+    $uid = $_SESSION['id'];
+
+    $sql2 = "SELECT * FROM token ORDER BY ttoken ASC";
+    $result2 = mysqli_query($conn,$sql2);
+    $row2 = mysqli_fetch_assoc($result2);
+    
+    $time = (int)$row2['ttoken'];
+    $filename= $time.".gcode";
+
+    //header('Content-type: test/plain');
+    $file = "./test.gcode";
+    $file_content = file_get_contents($file);
+    $gcode = explode("\n",$file_content);
+    $gcode = array_slice($gcode, 4);
 ?>
 
+<!DOCTYPE html >
 <html>
 <head>
     <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
@@ -146,10 +158,11 @@ $gcode = array_slice($gcode, 4);
 <h1 align="center">G-Code simulator</h1>
 
 <div class="plot container">
-    <form action="../plot.php" enctype="multipart/form-data" method="POST">
+    <form action="../plotter.php" enctype="multipart/form-data" method="POST">
     <span class="row">
-        <a class="col-lg-3 col-lg-offset-3" href="./test.gcode" id="save" download> Save Image </a><br>
-        <button class="col-lg-3 plotb" type="submit" value="PLOT" id="plotbutton" onclick="salert()">PLOT </button>
+        <a class="col-lg-3 col-lg-offset-3" href="./test.gcode" id="save" download="<?php echo $filename; ?>"> Save G-code </a><br>
+        <button class="col-lg-3 plotb" type="submit" value="PLOT" id="plotbutton">PLOT </button>
+        <input type="text" name="times" style="display:none;" value="<?php echo $time; ?>">
     </span>
     </form>
 </div>
@@ -161,14 +174,14 @@ $gcode = array_slice($gcode, 4);
 <script id="demoCode" type="application/gcode">    
 </script>
 
-<!-- ///////////////////////////////////// my script code .///////////////////////////////////////// -->
+<!-- ///////////////////////////////////// my script code ///////////////////////////////////////// -->
 <script>
     function show(){
         document.getElementById("plotbutton").style.display = "block";
     }
 
     window.onload = function(){
-        alert("Please SAVE IMAGE before plotting the image");
+        alert("Please SAVE the file before plotting");
     }
 </script>
 

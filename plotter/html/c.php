@@ -362,7 +362,6 @@
     }
 
     function check(){
-
         var exp = 0; //experiment name to decide the table to which we refer to.
         //0 for plotter, 1 for rubicks etc..
         //run ajax code to check whether the chance has arrived or not

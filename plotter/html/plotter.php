@@ -1,12 +1,12 @@
 <?php
-    include_once 'db.php';
+    include_once '../../db.php';
 
 	//this is the main web page
 	// time stamp and the file must be taken after submitting the form 
+	if(mysqli_real_escape_string($conn,$_POST['times'])){
+		$time = mysqli_real_escape_string($conn,$_POST['times']);
+?>
 
-	$time = mysqli_real_escape_string($conn,$_POST['timestamp']);
-
-	?>
 <html>
 	<head>
 	<title> NITK </title>
@@ -36,5 +36,10 @@
 		<input type="file" name="file">
 		<button type="submit" name="submit">SUBMIT</button>
 	</form>
+	<?php
+		}else{
+			echo "You are not authorized to access this page. Please go back";
+		}
+	?>
 </html>
 	
