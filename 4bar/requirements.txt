@@ -21,7 +21,7 @@ Jinja2==2.10
 Mako==1.0.7
 MarkupSafe==1.0
 packaging==18.0
-Pillow==5.2.0
+Pillow==6.2.0
 Pygments==2.2.0
 pyparsing==2.2.2
 python-dateutil==2.7.3
